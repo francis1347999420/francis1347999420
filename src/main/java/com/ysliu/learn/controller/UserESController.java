@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
  * @author ysliu
  * @since 2021-12-02
  */
-@Controller
+@RestController
 @RequestMapping("api/v1/user-es")
 public class UserESController {
 
