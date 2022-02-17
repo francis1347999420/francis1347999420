@@ -5,6 +5,7 @@ import com.ysliu.learn.entity.User;
 import com.ysliu.learn.entity.UserES;
 import com.ysliu.learn.service.UserESService;
 import com.ysliu.learn.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
  * @author ysliu
  * @since 2021-12-02
  */
+@Slf4j
 @RestController
 @RequestMapping("api/v1/user-es")
 public class UserESController {
@@ -41,8 +43,11 @@ public class UserESController {
     }
 
     @GetMapping("/{id}")
-    public UserES getById(@PathVariable("id") Long id) {
-        return userESService.getById(id);
+    public UserES getById(@PathVariable("id") Long id) throws InterruptedException {
+        log.info("Thread启动,{}",Thread.currentThread().getName());
+        UserES userES = userESService.getById(id);
+        log.info("Thread完成,{}", Thread.currentThread().getName());
+        return userES;
     }
 
     @DeleteMapping("/{id}")

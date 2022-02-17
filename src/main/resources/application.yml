@@ -20,6 +20,7 @@ spring:
     port: 6379
     timeout: 10000   #客户端超时
     password: Shun134!
+    database: 1
 #    lettuce:
 #      pool:
 #        max-active:5   #最大连接数
